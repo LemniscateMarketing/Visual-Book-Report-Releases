@@ -6,7 +6,7 @@ This repository intentionally contains **release artifacts only**. The applicati
 
 ## Install on Apple silicon macOS
 
-1. Download the latest `Visual Book Report_<version>_aarch64.dmg` from [Releases](../../releases/latest).
+1. Download the latest `Visual-Book-Report_<version>_aarch64.dmg` from [Releases](../../releases/latest).
 2. Open the DMG and drag **Visual Book Report** into **Applications**.
 3. Until the application is Developer ID signed and notarized, trusted testers must run:
 
