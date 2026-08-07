@@ -6,19 +6,24 @@ This repository intentionally contains **release artifacts only**. The applicati
 
 ## Install on Apple silicon macOS
 
-1. Download the latest `Visual-Book-Report_<version>_aarch64.dmg` from [Releases](../../releases/latest).
+1. Download the latest `visual-book-report-desktop-<version>-darwin-arm64.dmg` from [Releases](../../releases/latest).
 2. Open the DMG and drag **Visual Book Report** into **Applications**.
-3. Until the application is Developer ID signed and notarized, trusted testers must run:
-
-   ```sh
-   xattr -dr com.apple.quarantine "/Applications/Visual Book Report.app"
-   open -a "Visual Book Report"
-   ```
+3. This trusted-tester build is not yet Apple Developer ID signed or notarized. If macOS blocks the first launch, use the explicit **Open Anyway** control in **System Settings → Privacy & Security** after confirming that the download came from this repository.
 
 The DMG includes a reversible uninstaller. Project data is preserved by default unless the tester explicitly selects the purge-data option.
 
 ## Update channel
 
-Desktop releases use `desktop-v<major>.<minor>.<patch>` tags. The installed application checks this release channel when it starts. When a newer stable desktop release is available, the app shows an **Open Release** notice; replacement remains manual while packages are unsigned.
+Desktop releases use `desktop-v<major>.<minor>.<patch>` tags. Version `0.1.5` is the one-time manual bootstrap that installs the updater-capable application and its public verification key. From that build onward, the app checks this channel, offers **Install update & restart** for a newer compatible stable release, downloads the complete application archive, verifies its updater signature, replaces the installed app, and restarts it. **View release** remains available as a fallback.
 
-Each release includes `DESKTOP-RELEASE.json` with the source commit, architecture, byte sizes, and SHA-256 hashes for verification.
+Each complete Apple-silicon desktop release contains exactly these public artifacts:
+
+- `visual-book-report-desktop-<version>-darwin-arm64.dmg`
+- `visual-book-report-desktop-darwin-aarch64.app.tar.gz`
+- `visual-book-report-desktop-darwin-aarch64.app.tar.gz.sig`
+- `latest.json`
+- `DESKTOP-RELEASE.json`
+
+The lowercase ASCII filenames are part of the updater protocol. `latest.json` points to the archive under the same immutable desktop tag, and `DESKTOP-RELEASE.json` records the source commit, target, byte sizes, and SHA-256 hashes. A release is not activated until the uploaded asset names and bytes are read back and verified.
+
+The updater signature protects the downloaded application archive. It does not replace Apple Developer ID signing or notarization, which remain required before ordinary public distribution without the trusted-tester warning above.
