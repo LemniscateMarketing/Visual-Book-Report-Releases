@@ -31,7 +31,7 @@ version:
 - `Visual-Book-Report-<version>-Apple-Silicon-Sharing-Kit.zip` contains the
   byte-identical canonical DMG, instructions, checksums, and the optional
   Claude Desktop extension.
-- `visual-book-report-<product-version>.mcpb` installs the governed VBR tools
+- `visual-book-report-<mcp-version>.mcpb` installs the governed VBR tools
   in Claude Desktop without creating a separate desktop-app edition.
 
 The desktop app already bundles the local VBR MCP server and Node runtime for
