@@ -6,30 +6,32 @@ This repository intentionally contains **release artifacts only**. The applicati
 
 ## Current stable tester release
 
-The latest stable tester release is [Visual Book Report Desktop 0.1.15](../../releases/tag/desktop-v0.1.15):
+The latest stable tester release is [Visual Book Report Desktop 0.1.16](../../releases/tag/desktop-v0.1.16):
 
 - Product Release 0.2 (shown in the app as VBR Release 0.2)
-- Report Core 0.4.2
-- Desktop App 0.1.15
-- MCP Tools / Claude Desktop MCPB 0.4.3
+- Report Core 0.4.3
+- Desktop App 0.1.16
+- MCP Tools / Claude Desktop MCPB 0.4.4
 - Codex Plugin 0.4.1 (source-only; not a public release asset)
 
 There is one Visual Book Report app for existing users, new testers, and friends. The Sharing Kit is only a convenience ZIP containing the same audited DMG and MCPB with checksums and instructions; it is not a separate edition.
 
-Desktop 0.1.15 adds deterministic layout guardrails. **Normal Safe Flow** moves
-modules to the next row when they cannot fit safely side by side, while
-impossible Grid and oversized table layouts are rejected before save with
-actionable Report Issues. A rejected layout edit preserves the last valid
-project revision instead of storing a report with known horizontal overflow.
-MCP authoring, project validation, and rendered previews use the same findings.
+Desktop 0.1.16 makes Normal layout authoring clear and adaptive. Resize
+compatible modules, then use the labeled **Side by side · N** action to place
+two or three adjacent modules together; use **Full row** to expand one again.
+The same flow stacks modules at full width on mobile when space is tight, and
+toolbar controls avoid covering report content. Advanced mode still provides
+the typed Flex and Grid controls for expert layouts. The deterministic
+guardrails introduced in 0.1.15 continue to reject impossible layouts before
+save and preserve the last valid project revision.
 
 The release was built from exact private source commit
-`7f2141a6e628ca221c5a3196d9d2e207b36314d8`. The private source and source-only
+`c3ea29f216487b188240d325e03f18dc79b09c0e`. The private source and source-only
 Codex Plugin are not included in this artifact-only repository.
 
 ## Install on Apple silicon macOS
 
-1. Download `visual-book-report-desktop-0.1.15-darwin-arm64.dmg` from the [latest release](../../releases/latest).
+1. Download `visual-book-report-desktop-0.1.16-darwin-arm64.dmg` from the [latest release](../../releases/latest).
 2. Open the DMG and drag **Visual Book Report** into **Applications**.
 3. This trusted-tester build is not yet Apple Developer ID signed or notarized. If macOS blocks the first launch, use the explicit **Open Anyway** control in **System Settings → Privacy & Security** after confirming that the download came from this repository.
 
@@ -39,16 +41,16 @@ The DMG includes a reversible uninstaller. Project data is preserved by default 
 
 Desktop releases use `desktop-v<major>.<minor>.<patch>` tags. Version `0.1.5` is the one-time manual bootstrap that installs the updater-capable application and its public verification key. From that build onward, the app checks this channel, offers **Install update & restart** for a newer compatible stable release, downloads the complete application archive, verifies its updater signature, replaces the installed app, and restarts it. **View release** remains available as a fallback.
 
-The complete 0.1.15 release contains exactly seven public downloads for the
+The complete 0.1.16 release contains exactly seven public downloads for the
 same app and version:
 
-- `visual-book-report-desktop-0.1.15-darwin-arm64.dmg`
+- `visual-book-report-desktop-0.1.16-darwin-arm64.dmg`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz.sig`
 - `latest.json`
 - `DESKTOP-RELEASE.json`
-- `visual-book-report-0.4.3.mcpb`
-- `Visual-Book-Report-0.1.15-Apple-Silicon-Sharing-Kit.zip`
+- `visual-book-report-0.4.4.mcpb`
+- `Visual-Book-Report-0.1.16-Apple-Silicon-Sharing-Kit.zip`
 
 The first five files are the canonical desktop/updater contract. The MCPB is
 the optional Claude Desktop extension. The Sharing Kit contains the
@@ -75,7 +77,7 @@ owns the extension review, workspace selection, and final installation
 approval. The handoff does not mean the extension is installed or connected,
 and Visual Book Report does not silently change Claude configuration.
 
-If the in-app handoff is unavailable, download `visual-book-report-0.4.3.mcpb`
+If the in-app handoff is unavailable, download `visual-book-report-0.4.4.mcpb`
 from the latest release and, in Claude Desktop, use **Settings → Extensions →
 Advanced settings → Extension Developer → Install Extension**. Choose an
 explicit workspace and enable persistence only if books should survive
@@ -104,7 +106,7 @@ The lowercase ASCII filenames are part of the updater protocol. `latest.json` po
 
 The updater signature protects the downloaded application archive. It does not replace Apple Developer ID signing or notarization, which remain required before ordinary public distribution without the trusted-tester warning above.
 
-Version 0.1.15 is Apple silicon (arm64) only and requires macOS 12 or newer. It
+Version 0.1.16 is Apple silicon (arm64) only and requires macOS 12 or newer. It
 is an ad-hoc-signed, non-notarized tester build rather than a trusted
 public-production installer. The optional MCPB is an unsigned custom tester
 extension that still requires Claude Desktop review and approval. Confirm the
