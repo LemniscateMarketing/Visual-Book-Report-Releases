@@ -6,43 +6,45 @@ This repository intentionally contains **release artifacts only**. The applicati
 
 ## Current stable tester release
 
-The latest stable tester release is [Visual Book Report Desktop 0.1.18](../../releases/tag/desktop-v0.1.18):
+The latest stable tester release is [Visual Book Report Desktop 0.1.19](../../releases/tag/desktop-v0.1.19):
 
-- Product Release 0.2 (shown in the app as VBR Release 0.2)
-- Report Core 0.4.5
-- Desktop App 0.1.18
-- MCP Tools / Claude Desktop MCPB 0.4.6
+- Product Release 0.3 (shown in the app as VBR Release 0.3)
+- Report Core 0.4.6
+- Desktop App 0.1.19
+- MCP Tools / Claude Desktop MCPB 0.4.7
 - Codex Plugin 0.4.1 (source-only; not a public release asset)
 
 There is one Visual Book Report app for existing users, new testers, and friends. The Sharing Kit is only a convenience ZIP containing the same audited DMG and MCPB with checksums and instructions; it is not a separate edition.
 
-Desktop 0.1.18 expands the governed typography system introduced in 0.1.17
-into compact contextual **Style** drawers. Font, color, text alignment, layout,
-and arrangement controls open as an attached second row below the primary
-toolbar. The primary toolbar now uses familiar icons, while menus and pickers
-open as external popovers instead of expanding inside either row. On narrow
-screens, the same controls become an accessible mobile sheet.
+Desktop 0.1.19 introduces the responsive contextual Ribbon for Typography,
+Color, Alignment, Layout, and Arrange. The Ribbon uses application-owned menus,
+keeps **Back to Design** fixed and predictable, and preserves **Done** while
+numeric edits settle. Font size, line height, and tracking now preview live and
+support both press-and-hold stepping and horizontal ruler scrubbing with one
+undoable change per gesture.
 
-Project fonts can be uploaded as WOFF or WOFF2 files or pinned from Google
-Fonts. Their font data stays with the project and is carried into portable,
-offline output so the reader, standalone HTML, print, PDF, Desktop app, and MCPB
-render consistently without depending on a later remote request. The color
-drawer now focuses on a concise palette plus a real custom color picker, with
-clearer contrast feedback and consistent toolbar typography.
+Chart creation is now separated from advanced chart editing. With one eligible
+dataset, **Add Chart** inserts a ready chart immediately; with several datasets,
+it shows a compact chooser; and with none, it offers a direct **Open Data** path.
+Advanced mapping remains available in Properties after insertion.
 
-This release also improves selection and layout clarity and keeps the
-responsive reader transport synchronized when the viewport crosses a mobile
-breakpoint. The Normal **Side by side · N** and **Full row** actions introduced
-in 0.1.16 remain available, while Advanced mode retains the typed layout and
-typography controls.
+Page authoring now includes **Add page** in the Pages panel and at the end of the
+last editable page. New pages are inserted before the back cover, selected
+automatically, saved with the project, and participate in Undo and Redo. Page
+deletion also cleans dependent story and narration references safely.
+
+Project fonts, portable output, offline rendering, responsive reader controls,
+and the governed local AI integrations remain intact. MCPB 0.4.7 adds a
+machine-checked immutable package identity so published extension bytes cannot
+be silently reused under an existing version.
 
 The release was built from exact private source commit
-`d3b8456a463b93db91a7a0614b5bfa1383dd1060`. The private source and source-only
+`0faa5e943a4ecff9ae0d0bed2dc00fd82cefb3b0`. The private source and source-only
 Codex Plugin are not included in this artifact-only repository.
 
 ## Install on Apple silicon macOS
 
-1. Download `visual-book-report-desktop-0.1.18-darwin-arm64.dmg` from the [latest release](../../releases/latest).
+1. Download `visual-book-report-desktop-0.1.19-darwin-arm64.dmg` from the [latest release](../../releases/latest).
 2. Open the DMG and drag **Visual Book Report** into **Applications**.
 3. This trusted-tester build is not yet Apple Developer ID signed or notarized. If macOS blocks the first launch, use the explicit **Open Anyway** control in **System Settings → Privacy & Security** after confirming that the download came from this repository.
 
@@ -52,16 +54,16 @@ The DMG includes a reversible uninstaller. Project data is preserved by default 
 
 Desktop releases use `desktop-v<major>.<minor>.<patch>` tags. Version `0.1.5` is the one-time manual bootstrap that installs the updater-capable application and its public verification key. From that build onward, the app checks this channel, offers **Install update & restart** for a newer compatible stable release, downloads the complete application archive, verifies its updater signature, replaces the installed app, and restarts it. **View release** remains available as a fallback.
 
-The complete 0.1.18 release contains exactly seven public downloads for the
+The complete 0.1.19 release contains exactly seven public downloads for the
 same app and version:
 
-- `visual-book-report-desktop-0.1.18-darwin-arm64.dmg`
+- `visual-book-report-desktop-0.1.19-darwin-arm64.dmg`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz.sig`
 - `latest.json`
 - `DESKTOP-RELEASE.json`
-- `visual-book-report-0.4.6.mcpb`
-- `Visual-Book-Report-0.1.18-Apple-Silicon-Sharing-Kit.zip`
+- `visual-book-report-0.4.7.mcpb`
+- `Visual-Book-Report-0.1.19-Apple-Silicon-Sharing-Kit.zip`
 
 The first five files are the canonical desktop/updater contract. The MCPB is
 the optional Claude Desktop extension. The Sharing Kit contains the
@@ -88,7 +90,7 @@ owns the extension review, workspace selection, and final installation
 approval. The handoff does not mean the extension is installed or connected,
 and Visual Book Report does not silently change Claude configuration.
 
-If the in-app handoff is unavailable, download `visual-book-report-0.4.6.mcpb`
+If the in-app handoff is unavailable, download `visual-book-report-0.4.7.mcpb`
 from the latest release and, in Claude Desktop, use **Settings → Extensions →
 Advanced settings → Extension Developer → Install Extension**. Choose an
 explicit workspace and enable persistence only if books should survive
@@ -117,7 +119,7 @@ The lowercase ASCII filenames are part of the updater protocol. `latest.json` po
 
 The updater signature protects the downloaded application archive. It does not replace Apple Developer ID signing or notarization, which remain required before ordinary public distribution without the trusted-tester warning above.
 
-Version 0.1.18 is Apple silicon (arm64) only and requires macOS 12 or newer. It
+Version 0.1.19 is Apple silicon (arm64) only and requires macOS 12 or newer. It
 is an ad-hoc-signed, non-notarized tester build rather than a trusted
 public-production installer. The optional MCPB is an unsigned custom tester
 extension that still requires Claude Desktop review and approval. Confirm the
