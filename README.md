@@ -6,39 +6,50 @@ This repository intentionally contains **release artifacts only**. The applicati
 
 ## Current stable tester release
 
-The latest stable tester release is [Visual Book Report Desktop 0.1.21](../../releases/tag/desktop-v0.1.21):
+The latest stable tester release is [Visual Book Report Desktop 0.1.22](../../releases/tag/desktop-v0.1.22):
 
 - Product Release 0.3 (shown in the app as VBR Release 0.3)
 - Report Core 0.4.7
-- Desktop App 0.1.21
-- MCP Tools / Claude Desktop MCPB 0.4.10
+- Desktop App 0.1.22
+- MCP Tools / Claude Desktop MCPB 0.4.11
 - Codex Plugin 0.4.1 (source-only; not a public release asset)
 
 There is one Visual Book Report app for existing users, new testers, and friends. The Sharing Kit is only a convenience ZIP containing the same audited DMG and MCPB with checksums and instructions; it is not a separate edition.
 
-Desktop 0.1.21 refines the compact **Theme & Brand Studio** with application-owned,
-named color palettes for ink, muted ink, paper, accent, and rules. The controls
-preserve existing custom values, provide contrast guidance, support keyboard
-navigation, and keep the crisp, no-glow styling of the VBR design system.
+Desktop 0.1.22 is a focused reliability release from the third Serena-assisted
+lifecycle and race review. Project Library, project storage and recovery,
+Settings, the editor Project and Inspector surfaces, narration, media
+replacement, and HTML/PDF export now treat close, teardown, and replacement as
+terminal events. A late asynchronous result cannot overwrite newer work,
+revive detached UI, or trigger an export after its owner has gone away.
 
-The **Project** tab now puts presentation defaults and report details first.
-**History & recovery** stays compact until requested, shows recent restore
-points on demand, and opens the complete recovery list in a focused subview.
-Theme edits made during one Theme Studio session share a single restore point,
-reducing repetitive history entries while preserving earlier checkpoints.
+Persistent project, checkpoint, and asset-catalog operations now settle only
+after their complete IndexedDB transaction succeeds. Concurrent refresh,
+restore, import, audio, transcription, voice-generation, image, and video
+operations keep the newest valid request and discard superseded completions.
+Microphone, dialog, reader, Settings, and editor resources are also released
+consistently during close, remount, or partial-startup failure.
+
+The compact **Theme & Brand Studio**, presentation-first **Project** tab, and
+progressive **History & recovery** workflow introduced in Desktop 0.1.21 remain
+unchanged in this release.
 
 The desktop app continues to bundle the local VBR MCP server and runtime for
-the in-app Codex flow. MCPB 0.4.10 carries the matching governed authoring and
-checkpoint contracts for Claude Desktop; Claude still owns review, workspace
+the in-app Codex flow. MCPB 0.4.11 carries the matching governed authoring and
+lifecycle contracts for Claude Desktop; Claude still owns review, workspace
 selection, and final installation approval.
 
 The release was built from exact private source commit
-`8eb2fecfc363ec19c7bfe514771d1b368c08336c`. The private source and source-only
+`97fbf8b525671b2a1726c3c8867f5cc81b698e25`. The private source and source-only
 Codex Plugin are not included in this artifact-only repository.
+
+The signed updater path was exercised in an isolated copy of Desktop 0.1.21.
+That same app bundle advanced to 0.1.22, matched the complete candidate bundle,
+and preserved the seeded project, device settings, and portable asset bytes.
 
 ## Install on Apple silicon macOS
 
-1. Download `visual-book-report-desktop-0.1.21-darwin-arm64.dmg` from the [latest release](../../releases/latest).
+1. Download `visual-book-report-desktop-0.1.22-darwin-arm64.dmg` from the [latest release](../../releases/latest).
 2. Open the DMG and drag **Visual Book Report** into **Applications**.
 3. This trusted-tester build is not yet Apple Developer ID signed or notarized. If macOS blocks the first launch, use the explicit **Open Anyway** control in **System Settings → Privacy & Security** after confirming that the download came from this repository.
 
@@ -48,16 +59,16 @@ The DMG includes a reversible uninstaller. Project data is preserved by default 
 
 Desktop releases use `desktop-v<major>.<minor>.<patch>` tags. Version `0.1.5` is the one-time manual bootstrap that installs the updater-capable application and its public verification key. From that build onward, the app checks this channel, offers **Install update & restart** for a newer compatible stable release, downloads the complete application archive, verifies its updater signature, replaces the installed app, and restarts it. **View release** remains available as a fallback.
 
-The complete 0.1.21 release contains exactly seven public downloads for the
+The complete 0.1.22 release contains exactly seven public downloads for the
 same app and version:
 
-- `visual-book-report-desktop-0.1.21-darwin-arm64.dmg`
+- `visual-book-report-desktop-0.1.22-darwin-arm64.dmg`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz.sig`
 - `latest.json`
 - `DESKTOP-RELEASE.json`
-- `visual-book-report-0.4.10.mcpb`
-- `Visual-Book-Report-0.1.21-Apple-Silicon-Sharing-Kit.zip`
+- `visual-book-report-0.4.11.mcpb`
+- `Visual-Book-Report-0.1.22-Apple-Silicon-Sharing-Kit.zip`
 
 The first five files are the canonical desktop/updater contract. The MCPB is
 the optional Claude Desktop extension. The Sharing Kit contains the
@@ -84,7 +95,7 @@ owns the extension review, workspace selection, and final installation
 approval. The handoff does not mean the extension is installed or connected,
 and Visual Book Report does not silently change Claude configuration.
 
-If the in-app handoff is unavailable, download `visual-book-report-0.4.10.mcpb`
+If the in-app handoff is unavailable, download `visual-book-report-0.4.11.mcpb`
 from the latest release and, in Claude Desktop, use **Settings → Extensions →
 Advanced settings → Extension Developer → Install Extension**. Choose an
 explicit workspace and enable persistence only if books should survive
@@ -113,7 +124,7 @@ The lowercase ASCII filenames are part of the updater protocol. `latest.json` po
 
 The updater signature protects the downloaded application archive. It does not replace Apple Developer ID signing or notarization, which remain required before ordinary public distribution without the trusted-tester warning above.
 
-Version 0.1.21 is Apple silicon (arm64) only and requires macOS 12 or newer. It
+Version 0.1.22 is Apple silicon (arm64) only and requires macOS 12 or newer. It
 is an ad-hoc-signed, non-notarized tester build rather than a trusted
 public-production installer. The optional MCPB is an unsigned custom tester
 extension that still requires Claude Desktop review and approval. Confirm the
