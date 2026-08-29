@@ -6,29 +6,29 @@ This repository intentionally contains **release artifacts only**. The applicati
 
 ## Current stable tester release
 
-The latest stable tester release is [Visual Book Report Desktop 0.1.22](../../releases/tag/desktop-v0.1.22):
+The latest stable tester release is [Visual Book Report Desktop 0.1.23](../../releases/tag/desktop-v0.1.23):
 
 - Product Release 0.3 (shown in the app as VBR Release 0.3)
-- Report Core 0.4.7
-- Desktop App 0.1.22
+- Report Core 0.4.8
+- Desktop App 0.1.23
 - MCP Tools / Claude Desktop MCPB 0.4.11
 - Codex Plugin 0.4.1 (source-only; not a public release asset)
 
 There is one Visual Book Report app for existing users, new testers, and friends. The Sharing Kit is only a convenience ZIP containing the same audited DMG and MCPB with checksums and instructions; it is not a separate edition.
 
-Desktop 0.1.22 is a focused reliability release from the third Serena-assisted
-lifecycle and race review. Project Library, project storage and recovery,
-Settings, the editor Project and Inspector surfaces, narration, media
-replacement, and HTML/PDF export now treat close, teardown, and replacement as
-terminal events. A late asynchronous result cannot overwrite newer work,
-revive detached UI, or trigger an export after its owner has gone away.
+Desktop 0.1.23 is a focused authoring-comfort and geometry-stability release.
+The contextual **Add block** picker now contains its own layout and paint,
+ignores catalog scrolling when deciding whether to reposition, and follows
+settled reader-view transforms. This prevents the intermittent WebKit geometry
+escape that could pull the picker and nearby authoring content toward the left.
 
-Persistent project, checkpoint, and asset-catalog operations now settle only
-after their complete IndexedDB transaction succeeds. Concurrent refresh,
-restore, import, audio, transcription, voice-generation, image, and video
-operations keep the newest valid request and discard superseded completions.
-Microphone, dialog, reader, Settings, and editor resources are also released
-consistently during close, remount, or partial-startup failure.
+Inline text editing now keeps selection feedback away from the words with a
+soft offset outline and no active-typing shadow. The selected-block toolbar
+uses a restrained near-content shadow instead of panel-sized depth, leaving
+the text visually clear while the editing controls remain easy to find.
+
+The lifecycle, persistence, cancellation, teardown, and export hardening from
+Desktop 0.1.22 remains in place.
 
 The compact **Theme & Brand Studio**, presentation-first **Project** tab, and
 progressive **History & recovery** workflow introduced in Desktop 0.1.21 remain
@@ -40,16 +40,16 @@ lifecycle contracts for Claude Desktop; Claude still owns review, workspace
 selection, and final installation approval.
 
 The release was built from exact private source commit
-`97fbf8b525671b2a1726c3c8867f5cc81b698e25`. The private source and source-only
+`449c463208ea6009c43c9aae62c7e6288f16e078`. The private source and source-only
 Codex Plugin are not included in this artifact-only repository.
 
-The signed updater path was exercised in an isolated copy of Desktop 0.1.21.
-That same app bundle advanced to 0.1.22, matched the complete candidate bundle,
+The signed updater path was exercised in an isolated copy of Desktop 0.1.22.
+That same app bundle advanced to 0.1.23, matched the complete candidate bundle,
 and preserved the seeded project, device settings, and portable asset bytes.
 
 ## Install on Apple silicon macOS
 
-1. Download `visual-book-report-desktop-0.1.22-darwin-arm64.dmg` from the [latest release](../../releases/latest).
+1. Download `visual-book-report-desktop-0.1.23-darwin-arm64.dmg` from the [latest release](../../releases/latest).
 2. Open the DMG and drag **Visual Book Report** into **Applications**.
 3. This trusted-tester build is not yet Apple Developer ID signed or notarized. If macOS blocks the first launch, use the explicit **Open Anyway** control in **System Settings → Privacy & Security** after confirming that the download came from this repository.
 
@@ -59,16 +59,16 @@ The DMG includes a reversible uninstaller. Project data is preserved by default 
 
 Desktop releases use `desktop-v<major>.<minor>.<patch>` tags. Version `0.1.5` is the one-time manual bootstrap that installs the updater-capable application and its public verification key. From that build onward, the app checks this channel, offers **Install update & restart** for a newer compatible stable release, downloads the complete application archive, verifies its updater signature, replaces the installed app, and restarts it. **View release** remains available as a fallback.
 
-The complete 0.1.22 release contains exactly seven public downloads for the
+The complete 0.1.23 release contains exactly seven public downloads for the
 same app and version:
 
-- `visual-book-report-desktop-0.1.22-darwin-arm64.dmg`
+- `visual-book-report-desktop-0.1.23-darwin-arm64.dmg`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz.sig`
 - `latest.json`
 - `DESKTOP-RELEASE.json`
 - `visual-book-report-0.4.11.mcpb`
-- `Visual-Book-Report-0.1.22-Apple-Silicon-Sharing-Kit.zip`
+- `Visual-Book-Report-0.1.23-Apple-Silicon-Sharing-Kit.zip`
 
 The first five files are the canonical desktop/updater contract. The MCPB is
 the optional Claude Desktop extension. The Sharing Kit contains the
@@ -124,7 +124,7 @@ The lowercase ASCII filenames are part of the updater protocol. `latest.json` po
 
 The updater signature protects the downloaded application archive. It does not replace Apple Developer ID signing or notarization, which remain required before ordinary public distribution without the trusted-tester warning above.
 
-Version 0.1.22 is Apple silicon (arm64) only and requires macOS 12 or newer. It
+Version 0.1.23 is Apple silicon (arm64) only and requires macOS 12 or newer. It
 is an ad-hoc-signed, non-notarized tester build rather than a trusted
 public-production installer. The optional MCPB is an unsigned custom tester
 extension that still requires Claude Desktop review and approval. Confirm the
