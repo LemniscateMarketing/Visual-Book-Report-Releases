@@ -45,9 +45,12 @@ The candidate passed 537 source commands, native host/recovery/network checks,
 strict application/DMG/resource audits and a current-code instrumented signed
 update/restart test with a real QA book. A separate manual upgrade of genuine
 0.1.25 preserved VBR data and verified saved-book editing across a cold 0.1.26
-restart. The genuine historical 0.1.25-to-0.1.26 GitHub transaction is a separate
-post-publication check, not yet claimed as completed. This is not exhaustive
-cross-client, speech-accuracy or power-failure certification.
+restart. After publication, a genuine released 0.1.25 app copy downloaded and
+installed exact 0.1.26 through the unchanged official GitHub feed, automatically
+restarted, and reopened the saved eight-page QA book. This used a writable
+test-app location and backed-up real profile on the acceptance Mac; the normal
+installed app and original backup were retained unchanged. It is not exhaustive
+cross-client, protected-location, speech-accuracy or power-failure certification.
 
 ## Install on Apple silicon macOS
 
