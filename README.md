@@ -46,12 +46,17 @@ The candidate passed 537 source commands, 76 native host tests, 21 installer
 tests, three network-policy tests and 46 updater compatibility cases.
 Independent app, updater, mounted-DMG, resource, MCPB, static-release and
 Sharing Kit audits passed. Both packaged MCP forms passed 16 actual tool calls
-and synthetic project/artifact persistence across process restart. The genuine
-installed 0.1.26-to-0.1.27 normal-feed update/restart test is the next acceptance
-step; it is not claimed by those package checks. The earlier genuine released
-0.1.25-to-0.1.26 GitHub update remains separate historical proof. These checks
-are not exhaustive cross-client, protected-location, all-book, speech-accuracy
-or power-failure certification.
+and synthetic project/artifact persistence across process restart. The actual
+installed 0.1.26 app then successfully updated through GitHub and automatically
+restarted into the exact audited 0.1.27 bundle at the same installed path.
+Fresh Settings reported **Up to date**, and an existing eight-page saved book
+reopened. No DMG or reinstall was needed for this transition. With original
+app/data backups retained, all four stored projects and 35 checkpoints remained
+exactly unchanged. Asset-catalog content was preserved; one synchronization
+timestamp changed during the test. The earlier genuine released 0.1.25-to-0.1.26
+GitHub update remains separate historical proof. These checks are not exhaustive
+cross-client, protected-location, all-book, speech-accuracy or power-failure
+certification.
 
 ## Install on Apple silicon macOS
 
