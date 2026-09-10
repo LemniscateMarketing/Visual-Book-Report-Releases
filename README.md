@@ -4,12 +4,10 @@ Official public release artifacts for the Visual Book Report desktop application
 
 This repository intentionally contains **release artifacts only**. The application source, private documentation, credentials, client reports, and internal configuration are not published here.
 
-## Prepared next stable tester release
+## Current stable tester release
 
-[Visual Book Report Desktop 0.1.28](../../releases/tag/desktop-v0.1.28) is prepared
-for publication. Until it is activated, the current published stable tester
-remains [Desktop 0.1.27](../../releases/tag/desktop-v0.1.27); the 0.1.28 downloads
-below are not yet public. The prepared version matrix is:
+The latest published stable tester is
+[Visual Book Report Desktop 0.1.28](../../releases/tag/desktop-v0.1.28):
 
 - Product Release 0.4 (shown in the app as VBR Release 0.4)
 - Report Core 0.4.10
@@ -53,15 +51,35 @@ tests, three network-policy tests and 46 updater compatibility cases.
 Focused regression and wide/compact browser checks passed. Independent app,
 updater, mounted-DMG, resource, immutable-MCPB, static-release and Sharing Kit
 audits passed. The updater signature validates and altered archive bytes are
-rejected; every app file matches the updater archive and mounted DMG. No fresh
-packaged-MCP process session or complete cross-client certification is claimed
-for this candidate.
+rejected; every app file matches the updater archive and mounted DMG. All seven
+draft downloads and fresh anonymous public downloads matched the audited names,
+lengths and SHA-256 hashes; latest and tag routes agree on the published stable
+release. No fresh packaged-MCP process session or complete cross-client
+certification is claimed for this release.
 
-The installed Desktop 0.1.27 bundle was unchanged by preparation. A backed-up
-normal 0.1.27-to-0.1.28 updater transaction and fresh native GUI acceptance
-have not yet been completed for this candidate. The earlier genuine
-0.1.25-to-0.1.26 and 0.1.26-to-0.1.27 GitHub updates remain historical proof;
-they do not certify the new transition. In the prior 0.1.26-to-0.1.27 test,
+After a separate backup and approval, the actual installed 0.1.27 app used the
+normal GitHub updater to download and install 0.1.28, then restarted
+automatically at the same installed path. The new process was independently
+observed before UI reselection and remained alive for at least 30 seconds.
+Its complete bundle matched the audited candidate and passed strict/deep
+code-signature verification. Fresh **Check now** reported **Up to date** with
+automatic checks still off. The same eight-page saved QA book reopened with
+its saved marker and persistent-storage indication; Library still showed one
+active and three archived projects. No DMG, uninstall or manual reinstall was
+needed for this transition.
+
+Original app/data backups and post-update snapshots are retained and reverified
+intact. Copied-snapshot comparison confirmed byte-exact records for all four
+projects, 35 checkpoints and three page thumbnails; module installations stayed
+empty. All four asset catalogs retained their content: three values were exact,
+and one changed only its synchronization `updatedAt` timestamp. The only
+LocalStorage value change was the known updater-preference record; automatic
+checks remain off with 0.1.28 cached as current/successful. No audited store
+keys were added or removed. These results demonstrate preservation of the
+tested content, not identical database files or blanket all-book certification.
+
+The earlier genuine 0.1.25-to-0.1.26 and 0.1.26-to-0.1.27 GitHub updates remain
+separate historical proof. In the prior 0.1.26-to-0.1.27 test,
 automatic restart, exact candidate identity and saved-book reopening passed
 without a DMG or reinstall. Original app/data backups were retained, projects
 and checkpoints were unchanged, and the only catalog change was a
@@ -70,7 +88,7 @@ protected-location, all-book, speech-accuracy or power-failure certification.
 
 ## Install on Apple silicon macOS
 
-1. After publication, download `visual-book-report-desktop-0.1.28-darwin-arm64.dmg` from the [0.1.28 release](../../releases/tag/desktop-v0.1.28). Until then, use the [current stable release](../../releases/latest).
+1. Download `visual-book-report-desktop-0.1.28-darwin-arm64.dmg` from the [latest release](../../releases/latest).
 2. Follow the DMG guide to install **Visual Book Report** in your own Applications folder. For an existing installation, quit VBR and retain a copy of the old app before replacing only the app; leave all books and settings intact. Writable existing installations can continue using in-app updates.
 3. This trusted-tester build is not yet Apple Developer ID signed or notarized. If macOS blocks the first launch, use the explicit **Open Anyway** control in **System Settings → Privacy & Security** after confirming that the download came from this repository.
 
@@ -89,14 +107,14 @@ repaired updater is available only after the new app is installed; it cannot
 protect a transaction still being performed by an older updater. Protected
 application locations may require manual installation for later updates too.
 
-Once 0.1.28 is published, Desktop 0.1.25/0.1.26/0.1.27 users in writable
-application locations can check for it and select **Install update & restart**.
-The official feed and verification key are
-unchanged. The conservative DMG guidance above concerns earlier updaters, not a
-new protocol migration or a requirement to reinstall after every release.
+Desktop 0.1.25/0.1.26/0.1.27 users in writable application locations can check
+for 0.1.28 and select **Install update & restart**. The official feed and
+verification key are unchanged. The conservative DMG guidance above concerns
+earlier updaters, not a new protocol migration or a requirement to reinstall
+after every release.
 
-The prepared 0.1.28 release contains exactly seven intended public downloads
-for the same app and version:
+The complete 0.1.28 release contains exactly seven public downloads for the
+same app and version:
 
 - `visual-book-report-desktop-0.1.28-darwin-arm64.dmg`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz`
