@@ -1,138 +1,107 @@
 # Visual Book Report Releases
 
-Official public release artifacts for the Visual Book Report desktop application.
+Official public release artifacts only. Private source, internal documents,
+client reports and credentials do not belong in this repository.
 
-This repository intentionally contains **release artifacts only**. The application source, private documentation, credentials, client reports, and internal configuration are not published here.
+## Prepared Desktop 0.1.29 — activation pending
 
-## Current stable tester release
+Desktop 0.1.29 is prepared for publication. Until its complete draft asset set
+passes download verification and is activated, the current published stable
+release remains [Desktop 0.1.28](../../releases/tag/desktop-v0.1.28).
+Use the [latest published release](../../releases/latest) for active downloads.
 
-The latest published stable tester is
-[Visual Book Report Desktop 0.1.28](../../releases/tag/desktop-v0.1.28):
+Apple-silicon macOS 12+ stable tester. This is an HTML export reliability repair,
+not a new feature phase or a change to the Product Release line.
 
-- Product Release 0.4 (shown in the app as VBR Release 0.4)
-- Report Core 0.4.10
-- Desktop App 0.1.28
-- MCP Tools / Claude Desktop MCPB 0.4.13 (unchanged)
-- Codex Plugin 0.4.1 (source-only; not a public release asset)
+| Coordinate | Version |
+| --- | --- |
+| Product Release | 0.4 |
+| Report Core | 0.4.10, unchanged |
+| Desktop App | 0.1.29 |
+| MCP Tools / Claude Desktop MCPB | 0.4.13, unchanged |
+| Codex Plugin | 0.4.1, unchanged/source-only; not a release asset |
 
-There is one Visual Book Report app for existing users, new testers, and friends. The Sharing Kit is only a convenience ZIP containing the same audited DMG and MCPB with checksums and instructions; it is not a separate edition.
+## Repair
 
-Desktop 0.1.28 fixes keyboard-focus continuity under the unchanged
-**VBR Release 0.4** line. After a keyboard block move or reparenting, focus
-stays on the live replacement Move handle without scrolling the page. Focus
-is not taken back after editing ends, the editor disconnects, or focus moves
-elsewhere. Selection behavior, pointer actions, inline text, contextual toolbar
-placement and visual styling are unchanged. Previous nested-editing,
-validation, updater, installation-location, persistence, recovery and media
-stabilization remains included. No new feature phase starts.
+Overlapping HTML exports now return an explicit busy result before editor
+synchronization or injected hooks. One active export retains its own download,
+status and controls until it settles. Retry, callback chaining, failure and
+teardown behavior have regression coverage. No request is silently queued or
+reported as another report's successful download.
 
-The macOS updater now validates the replacement before placement, restores the
-previous app when possible, retains uncertain recovery files and avoids the
-former destructive privileged replacement path. Protected locations require a
-manual update. Download and metadata deadlines are separate, with stalled
-transfers still bounded. These repairs do not promise power-loss recovery or
-automatic post-launch health rollback.
+This addresses a confirmed integration/API race; ordinary double-click
+reachability through a disabled menu was not established. Existing validation,
+asset restrictions, Offline/Connected profiles, toolbar placement and visual
+styling remain unchanged. Previous keyboard-focus, nested-editing, updater,
+recovery and local integration repairs remain included.
 
-The existing Claude Desktop approval handoff, local Codex MCP flow, authoring,
-Theme & Brand Studio, Project, and History & recovery workflows remain in place.
+## Updating
 
-The desktop app continues to bundle the local VBR MCP server and Node runtime
-for the in-app Codex flow. MCPB 0.4.13 carries the matching governed authoring
-and lifecycle contracts for Claude Desktop and is byte-identical to the
-already published installer. This Desktop repair does not change MCP tools
-or silently modify existing client configuration.
+Desktop 0.1.25 through 0.1.28 users in writable application locations can use
+**Settings → App & Updates → Check now → Install update & restart** once this
+release is activated. The whole app updates together. The official feed,
+verification key and app identifier are unchanged.
 
-The release was built from exact private source commit
-`45faf456bc37f56b762789ba56e076cfaee81906`. The private source and source-only
-Codex Plugin are not included in this artifact-only repository.
+For 0.1.24 and earlier, retain the old app and use the verified DMG for this
+first upgrade. This conservative guidance does not mean all earlier updates
+failed. New/manual installations follow the DMG guide into your own
+Home/Applications folder. Do not uninstall, delete books or merge app bundles.
+Protected/read-only locations may require manual placement. Do not remove
+quarantine attributes or disable Gatekeeper. For this non-notarized tester,
+use macOS's explicit **Open Anyway** approval only after verifying the source
+repository and release checksums.
 
-The candidate passed 537 source commands, 76 native host tests, 21 installer
-tests, three network-policy tests and 46 updater compatibility cases.
-Focused regression and wide/compact browser checks passed. Independent app,
-updater, mounted-DMG, resource, immutable-MCPB, static-release and Sharing Kit
-audits passed. The updater signature validates and altered archive bytes are
-rejected; every app file matches the updater archive and mounted DMG. All seven
-draft downloads and fresh anonymous public downloads matched the audited names,
-lengths and SHA-256 hashes; latest and tag routes agree on the published stable
-release. No fresh packaged-MCP process session or complete cross-client
-certification is claimed for this release.
+VBR updates do not silently update Claude's installed extension or rewrite
+Codex/Claude client configuration. Exact MCPB 0.4.13 installations need no new
+extension version for this Desktop-only repair. Older Claude extensions use
+VBR's verified update handoff and Claude's separate review/workspace approval.
+The Codex Plugin remains source-only; automatic project mirroring is not implemented.
 
-After a separate backup and approval, the actual installed 0.1.27 app used the
-normal GitHub updater to download and install 0.1.28, then restarted
-automatically at the same installed path. The new process was independently
-observed before UI reselection and remained alive for at least 30 seconds.
-Its complete bundle matched the audited candidate and passed strict/deep
-code-signature verification. Fresh **Check now** reported **Up to date** with
-automatic checks still off. The same eight-page saved QA book reopened with
-its saved marker and persistent-storage indication; Library still showed one
-active and three archived projects. No DMG, uninstall or manual reinstall was
-needed for this transition.
+## Verification and limits
 
-Original app/data backups and post-update snapshots are retained and reverified
-intact. Copied-snapshot comparison confirmed byte-exact records for all four
-projects, 35 checkpoints and three page thumbnails; module installations stayed
-empty. All four asset catalogs retained their content: three values were exact,
-and one changed only its synchronization `updatedAt` timestamp. The only
-LocalStorage value change was the known updater-preference record; automatic
-checks remain off with 0.1.28 cached as current/successful. No audited store
-keys were added or removed. These results demonstrate preservation of the
-tested content, not identical database files or blanket all-book certification.
+Exact build source: `3a4abb85abc390e9b21168210005b1d8ea76453e`.
+The candidate passed 538 source commands, 76 native host tests, 21 installer
+tests, all three network-policy tests and 46 updater compatibility cases.
+Independent static, app, updater, mounted-DMG and Sharing Kit audits passed.
+The updater signature verifies and altered bytes are rejected; every app file
+and permission matches the updater archive and mounted DMG. MCPB 0.4.13 is
+byte-identical to the previously published installer.
 
-The earlier genuine 0.1.25-to-0.1.26 and 0.1.26-to-0.1.27 GitHub updates remain
-separate historical proof. In the prior 0.1.26-to-0.1.27 test,
-automatic restart, exact candidate identity and saved-book reopening passed
-without a DMG or reinstall. Original app/data backups were retained, projects
-and checkpoints were unchanged, and the only catalog change was a
-synchronization timestamp. These finite checks are not exhaustive cross-client,
-protected-location, all-book, speech-accuracy or power-failure certification.
+Isolated browser checks reached completed Offline and Connected export status,
+re-enabled controls and normal navigation. The browser download observer timed
+out, so that UI observation is not claimed as a new saved-file identity.
+Source/package tests provide separate artifact evidence. No new visual design
+or fresh Claude Design approval is claimed.
 
-## Install on Apple silicon macOS
+Publication download readback and the actual 0.1.28-to-0.1.29 installed update
+are pending at this preparation checkpoint. They will be recorded after
+verification, not inferred from local tests. Earlier normal updater transitions
+through 0.1.28 remain separate historical proof.
 
-1. Download `visual-book-report-desktop-0.1.28-darwin-arm64.dmg` from the [latest release](../../releases/latest).
-2. Follow the DMG guide to install **Visual Book Report** in your own Applications folder. For an existing installation, quit VBR and retain a copy of the old app before replacing only the app; leave all books and settings intact. Writable existing installations can continue using in-app updates.
-3. This trusted-tester build is not yet Apple Developer ID signed or notarized. If macOS blocks the first launch, use the explicit **Open Anyway** control in **System Settings → Privacy & Security** after confirming that the download came from this repository.
+This remains an ad-hoc-signed, non-notarized tester app with an unsigned MCPB,
+not an Apple Developer-ID/notarized production-public installer. No universal
+future-update, power-loss recovery, post-launch health rollback, all-Mac/all-book
+or complete cross-client certification is claimed. Publisher/license decisions
+remain separate. No fresh packaged-MCP session or client installation is claimed.
 
-The DMG includes a reversible uninstaller. Project data is preserved by default unless the tester explicitly selects the purge-data option.
+## Downloads
 
-Do not remove quarantine attributes or disable Gatekeeper to install this
-tester; use macOS's explicit approval only after confirming the repository
-and release checksums.
+Exactly seven intended public assets:
 
-## Update channel
-
-Desktop releases use `desktop-v<major>.<minor>.<patch>` tags. Version `0.1.5` is the one-time manual bootstrap that installs the updater-capable application and its public verification key. From that build onward, the app checks this channel, offers **Install update & restart** for a newer compatible stable release, downloads the complete application archive, verifies its updater signature, replaces the installed app, and restarts it. **View release** remains available as a fallback.
-
-**For Desktop 0.1.24 and earlier, use the DMG for this first upgrade.** The
-repaired updater is available only after the new app is installed; it cannot
-protect a transaction still being performed by an older updater. Protected
-application locations may require manual installation for later updates too.
-
-Desktop 0.1.25/0.1.26/0.1.27 users in writable application locations can check
-for 0.1.28 and select **Install update & restart**. The official feed and
-verification key are unchanged. The conservative DMG guidance above concerns
-earlier updaters, not a new protocol migration or a requirement to reinstall
-after every release.
-
-The complete 0.1.28 release contains exactly seven public downloads for the
-same app and version:
-
-- `visual-book-report-desktop-0.1.28-darwin-arm64.dmg`
+- `visual-book-report-desktop-0.1.29-darwin-arm64.dmg`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz`
 - `visual-book-report-desktop-darwin-aarch64.app.tar.gz.sig`
 - `latest.json`
 - `DESKTOP-RELEASE.json`
 - `visual-book-report-0.4.13.mcpb`
-- `Visual-Book-Report-0.1.28-Apple-Silicon-Sharing-Kit.zip`
+- `Visual-Book-Report-0.1.29-Apple-Silicon-Sharing-Kit.zip`
 
-The first five files are the canonical desktop/updater contract. The MCPB is
-the optional Claude Desktop extension. The Sharing Kit contains the
-byte-identical canonical DMG and MCPB plus checksums and tester instructions.
-Neither companion download creates a second desktop-app edition.
-
-The desktop app already bundles the local VBR MCP server and Node runtime for
-the in-app Codex connection flow. Companion assets do not change updater
-selection: the app accepts only the exact canonical metadata, archive, and
-signature filenames for its architecture.
+The Sharing Kit wraps the same audited DMG and MCPB with checksums and
+instructions; it is not another app edition. The app already includes the
+local MCP server and Node runtime for its Codex flow. `DESKTOP-RELEASE.json`
+records hashes, while `latest.json` points to the signed archive under the
+same immutable tag. Private source/docs, user data, credentials, the internal
+static ZIP and source-only Codex Plugin are not uploaded here.
 
 ## Use the AI integrations
 
@@ -182,7 +151,7 @@ The lowercase ASCII filenames are part of the updater protocol. `latest.json` po
 
 The updater signature protects the downloaded application archive. It does not replace Apple Developer ID signing or notarization, which remain required before ordinary public distribution without the trusted-tester warning above.
 
-Version 0.1.28 is Apple silicon (arm64) only and requires macOS 12 or newer. It
+Version 0.1.29 is Apple silicon (arm64) only and requires macOS 12 or newer. It
 is an ad-hoc-signed, non-notarized tester build rather than a trusted
 public-production installer. The optional MCPB is an unsigned custom tester
 extension that still requires Claude Desktop review and approval. Confirm the
