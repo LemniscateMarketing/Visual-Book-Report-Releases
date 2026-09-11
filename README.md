@@ -37,8 +37,8 @@ recovery and local integration repairs remain included.
 ## Updating
 
 Desktop 0.1.25 through 0.1.28 users in writable application locations can use
-**Settings → App & Updates → Check now → Install update & restart** once this
-release is activated. The whole app updates together. The official feed,
+**Settings → App & Updates → Check now → Install update & restart**.
+The whole app updates together. The official feed,
 verification key and app identifier are unchanged.
 
 For 0.1.24 and earlier, retain the old app and use the verified DMG for this
@@ -74,9 +74,20 @@ or fresh Claude Design approval is claimed.
 
 All seven draft downloads and fresh anonymous public downloads passed exact
 name, length and SHA-256 checks, including a separate independent readback.
-The actual backed-up 0.1.28-to-0.1.29 installed update is being verified
-separately; no completed transition is claimed at this checkpoint. Earlier
-normal updater transitions through 0.1.28 remain separate historical proof.
+A backed-up, normal installed 0.1.28 app used the unchanged official updater
+to install and automatically restart into the exact 0.1.29 package. Settings
+then reported 0.1.29 and a fresh check reported **Up to date**. Existing saved
+content reopened, and copied-snapshot comparison found no lost projects,
+checkpoints, thumbnails or stored keys; only expected update metadata and a
+catalog synchronization timestamp changed. No DMG or reinstallation was used.
+
+**Startup acceptance caveat:** the first post-update window appeared blank.
+The same automatically restarted process later rendered Library, Settings and
+the saved book without a manual relaunch or data reset. A separate normal cold
+launch promptly rendered Library. The initial blank-window cause is not yet
+confirmed; this release does not claim immediate or seamless startup. Focused
+startup diagnosis remains open. This caveat is separate from verified package
+replacement, automatic restart and data preservation.
 
 This remains an ad-hoc-signed, non-notarized tester app with an unsigned MCPB,
 not an Apple Developer-ID/notarized production-public installer. No universal
