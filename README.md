@@ -3,12 +3,11 @@
 Official public release artifacts only. Private source, internal documents,
 client reports and credentials do not belong in this repository.
 
-## Prepared Desktop 0.1.29 — activation pending
+## Current stable tester: Desktop 0.1.29
 
-Desktop 0.1.29 is prepared for publication. Until its complete draft asset set
-passes download verification and is activated, the current published stable
-release remains [Desktop 0.1.28](../../releases/tag/desktop-v0.1.28).
-Use the [latest published release](../../releases/latest) for active downloads.
+[Desktop 0.1.29](../../releases/tag/desktop-v0.1.29) is published stable/latest.
+All seven draft and fresh anonymous public downloads match their audited hashes.
+Use the [latest published release](../../releases/latest) for downloads.
 
 Apple-silicon macOS 12+ stable tester. This is an HTML export reliability repair,
 not a new feature phase or a change to the Product Release line.
@@ -73,10 +72,11 @@ out, so that UI observation is not claimed as a new saved-file identity.
 Source/package tests provide separate artifact evidence. No new visual design
 or fresh Claude Design approval is claimed.
 
-Publication download readback and the actual 0.1.28-to-0.1.29 installed update
-are pending at this preparation checkpoint. They will be recorded after
-verification, not inferred from local tests. Earlier normal updater transitions
-through 0.1.28 remain separate historical proof.
+All seven draft downloads and fresh anonymous public downloads passed exact
+name, length and SHA-256 checks, including a separate independent readback.
+The actual backed-up 0.1.28-to-0.1.29 installed update is being verified
+separately; no completed transition is claimed at this checkpoint. Earlier
+normal updater transitions through 0.1.28 remain separate historical proof.
 
 This remains an ad-hoc-signed, non-notarized tester app with an unsigned MCPB,
 not an Apple Developer-ID/notarized production-public installer. No universal
